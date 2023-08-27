@@ -1,0 +1,58 @@
+      ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. SIMULADOR.
+
+       ENVIRONMENT DIVISION.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+
+           01 WKS-PAGO-MENSUAL PIC 9(5)V9(2).
+           01 WKS-TASA-ANUAL PIC 9(5)V9(3).
+           01 WKS-PAGO-SEGURO PIC 9(5)V9(2).
+           01 WKS-BONIFICACION PIC 9(5)V9(2).
+
+           01 WKS-TASA-MENSUAL PIC 9(1)V9(4).
+           01 WKS-INTERES-MENSUAL PIC 9(5)V9(2).
+           01 WKS-PAGO-SEGURO-TOTAL PIC 9(5)V9(2).
+           01 WKS-PAGO-NETO PIC 9(5)V9(2).
+
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+            DISPLAY "*****BIENVENIDO*****".
+
+            DISPLAY "INTRODUCE PAGO MENSUAL".
+            ACCEPT WKS-PAGO-MENSUAL.
+
+            DISPLAY "INTRODUCE TASA ANUAL".
+            ACCEPT WKS-TASA-ANUAL.
+
+            DISPLAY "INTRODUCE PAGO DEL SEGURO".
+            ACCEPT WKS-PAGO-SEGURO.
+
+            DISPLAY "INTRODUCE BONIFICACION".
+            ACCEPT WKS-BONIFICACION.
+
+            DIVIDE WKS-TASA-ANUAL BY 100 GIVING WKS-TASA-ANUAL.
+            DIVIDE WKS-TASA-ANUAL BY 12 GIVING WKS-TASA-MENSUAL.
+
+            MULTIPLY WKS-TASA-MENSUAL BY WKS-PAGO-MENSUAL
+            GIVING WKS-INTERES-MENSUAL.
+
+            ADD WKS-PAGO-MENSUAL WKS-PAGO-SEGURO WKS-INTERES-MENSUAL
+            GIVING WKS-PAGO-SEGURO-TOTAL.
+
+            SUBTRACT WKS-PAGO-SEGURO-TOTAL FROM WKS-BONIFICACION
+            GIVING WKS-PAGO-NETO.
+
+            DISPLAY "LA TASA MENSUAL ES: " WKS-TASA-MENSUAL.
+            DISPLAY "EL INTERES MENSUAL ES: " WKS-INTERES-MENSUAL.
+            DISPLAY "EL PAGO CON SEGURO ES: " WKS-PAGO-SEGURO-TOTAL.
+            DISPLAY "EL PAGO NETO ES: " WKS-PAGO-NETO.
+            STOP RUN.
+       END PROGRAM SIMULADOR.
