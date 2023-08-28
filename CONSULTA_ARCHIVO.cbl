@@ -42,7 +42,7 @@
            PERFORM 2100-BUSCAR-CLIENTE UNTIL WKS-CLIENTE = 1.
 
            IF WKS-CLIENTE-ENCONTRADO = "N"
-           DISPLAY "NO SE ENCONTRO EL CLIENTE".
+               DISPLAY "NO SE ENCONTRO EL CLIENTE".
 
            DISPLAY "¿QUIERES BUSCAR OTRO CLIENTE?".
            DISPLAY "1. SI".
@@ -50,8 +50,10 @@
            ACCEPT WKS-FIN.
 
            IF WKS-FIN = 1
-             MOVE "N" TO WKS-CLIENTE-ENCONTRADO.
-
+             MOVE "N" TO WKS-CLIENTE-ENCONTRADO
+             MOVE 0 TO WKS-CLIENTE.
+             CLOSE CLIENTES.
+             OPEN INPUT CLIENTES.
 
        2100-BUSCAR-CLIENTE.
 
@@ -64,9 +66,7 @@
                DISPLAY "ANUALIDAD: " ANUALIDAD-FILE
                DISPLAY "FECHA DE ALTA: ANIO " Y " MES " M " DIA " D
                DISPLAY SPACE
-               MOVE "S" TO WKS-CLIENTE-ENCONTRADO
-               MOVE ZERO TO WKS-ID-CLIENTE.
-
+               MOVE "S" TO WKS-CLIENTE-ENCONTRADO.
 
        3000-FIN.
            CLOSE CLIENTES.
