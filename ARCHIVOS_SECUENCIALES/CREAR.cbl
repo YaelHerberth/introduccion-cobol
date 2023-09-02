@@ -22,10 +22,6 @@
 
        WORKING-STORAGE SECTION.
        01 WKS-FIN PIC 9.
-       01 WKS-FECHA-ACTUAL.
-           05 Año PIC 9(4).
-           05 Mes PIC 99.
-           05 Día PIC 99.
 
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
@@ -76,6 +72,7 @@
            ACCEPT WKS-FIN.
 
        3000-FIN.
+           DISPLAY "HASTA LUEGO!!!"
            CLOSE CLIENTES.
 
 
